@@ -24,7 +24,7 @@ case ESP_BT_GAP_DISC_RES_EVT: {
         break;
 ```
 
-You don't need the `printf`, and as outlined [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html), this case is triggered in the ``bt_app_gap_cb()`` callback function when the Bluetooth device has responded to the `esp_err_tesp_bt_gap_start_discovery()` call (which performs the BT discovery process).
+You don't need the `printf`, and as outlined [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html), this case is triggered in the ``bt_app_gap_cb()`` callback function when a Bluetooth device has responded to the `esp_err_tesp_bt_gap_start_discovery()` call (which performs the BT discovery process).
 
 The `update_device_info(param);` line uses values filled into the [`param` variable](https://github.com/espressif/esp-idf/blob/a352097/components/bt/host/bluedroid/api/include/api/esp_gap_bt_api.h#L339) to display the BT address and RSSI (signal strength).  The [A2DP union](https://github.com/espressif/esp-idf/blob/a352097/components/bt/host/bluedroid/api/include/api/esp_gap_bt_api.h#L226) was a clue on getting this to work.  In particular, [this line](https://github.com/espressif/esp-idf/blob/a352097/components/bt/host/bluedroid/api/include/api/esp_gap_bt_api.h#L336) contains the variable 
 ```
