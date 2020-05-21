@@ -1,12 +1,12 @@
-# eps32bluetooth-scanner with device name
+# eps32bluetooth-scanner with device name retrieval
 
 I wanted to see if an ESP32 could find user-given names of advertising
-devcies (mainly, phones) on classic Bluetooth (not BLE). I know nothing about Bluetooth, except
+devices (mainly, phones) on classic Bluetooth (not BLE). I know nothing about Bluetooth, except
 that for $8 on eBay, you can buy a ESP32 that has BT and BLE functionality.  Plus I did
-a project a while back using the ESP8622. So I bought 3 of them, and went to work. (I was trying
+a project a while back using the ESP8622. So I bought 3 ESP32s and went to work. (I was trying
 to build a digital contact tracing system to help get us through the Covid-19 crisis using the ESP32).
 
-The install procedure [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) was flawless for macOS.
+The install procedure [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) worked flawlessly on macOS.
 
 I did a bunch of searching on my way to develop the code for the ESP32, and there seems to be a lot of
 people wanting to probe BT device names, with few solutions. I was able to modify the stock ESP32 bt_discovery.c code [found here](https://github.com/espressif/esp-idf/blob/master/examples/bluetooth/bluedroid/classic_bt/bt_discovery/main/bt_discovery.c) to make this work. Here's how.
@@ -44,6 +44,9 @@ case ESP_BT_GAP_READ_REMOTE_NAME_EVT:
 
 into the callback ``bt_app_gap_cb()`` ``case`` structure. When this is triggered, the variable `param->read_rmt_name.rmt_name)` will contain the remote device's name `ESP_BT_GAP_READ_REMOTE_NAME_EVT` is the callback event for `esp_bt_gap_read_remote_name()`.
 
+# Results
+
+Works great.  I was bummed though, because an iPhone is only discoverable when it is on, and you are on the Settings->Bluetooth screen. In this case, the ESP32 will find it and display it's name every time (same with an iPad). I was naively hoping that any BT device would chime in to the ESP32 probe for a 
 
 
 
