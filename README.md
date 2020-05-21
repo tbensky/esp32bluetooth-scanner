@@ -46,7 +46,7 @@ into the callback ``bt_app_gap_cb()`` ``case`` structure. When this is triggered
 
 # Results
 
-Works great.  I was bummed though, because an iPhone is only discoverable when it is on, and you are on the Settings->Bluetooth screen. In this case, the ESP32 will find it and display it's name every time (same with an iPad). I was naively hoping that any BT device would chime in to the ESP32 probe for a 
+Works great.  I was bummed though, because an iPhone is only discoverable when it is on, and you are in the Settings>General>Bluetooth menu. In this case, the ESP32 will find it and display it's name every time (same with an iPad). I was naively hoping that any BT device would chime in to the ESP32 probe for a 
 
 
 
