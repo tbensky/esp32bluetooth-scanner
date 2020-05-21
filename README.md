@@ -1,4 +1,4 @@
-# ESP32-Bluetooth-scanner with device name retrieval
+# ESP32 Bluetooth scanner with device name retrieval
 
 I wanted to see if an ESP32 could find user-given names of advertising
 devices (mainly, phones) on classic Bluetooth (not BLE). I know nothing about Bluetooth, except
