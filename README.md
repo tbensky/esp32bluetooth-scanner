@@ -1,7 +1,7 @@
 # ESP32 Bluetooth scanner with device name retrieval
 
 I wanted to see if an ESP32 could find user-given names of advertising Bluetooth
-devices (mainly, phones) using classic Bluetooth (not BLE). I know nothing about Bluetooth, except
+devices (mainly phones) using classic Bluetooth (not BLE). I know nothing about Bluetooth, except
 that for $8 on eBay, you can buy a ESP32 that has BT and BLE functionality.  Plus I did
 a project a while back using the ESP8622. So I bought 3 ESP32s and went to work. (I was trying
 to build a digital contact tracing system to help get us through the Covid-19 crisis using the ESP32).
@@ -13,7 +13,7 @@ people wanting to probe BT device names, with few solutions, so I am presenting 
 
  I was able to modify the stock ESP32 [bt_discovery.c](https://github.com/espressif/esp-idf/blob/master/examples/bluetooth/bluedroid/classic_bt/bt_discovery/main/bt_discovery.c) code to make device name retrieving work. Here's what I did.
 
-The base code in bt_discovery.c basically does it all (that is, the Bluetooth scanning), but simply does not include code to probe a discovered devices's name, once it chimes in as being present.  The modifications were minor: 
+The base code in bt_discovery.c basically does it all (i.e. the Bluetooth scanning), but simply does not include code to probe a discovered devices's name, once it chimes in as being present.  The modifications were minor: 
 
 First modify this case block as follows:
 
@@ -24,7 +24,7 @@ case ESP_BT_GAP_DISC_RES_EVT: {
         break;
 ```
 
-As outlined [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html), this case is triggered in the ``bt_app_gap_cb()`` callback function when a Bluetooth device has responded to the `esp_err_tesp_bt_gap_start_discovery()` call (which performs the BT discovery process). This seems to be the device chiming in, as a response to the scan by the ESP32.
+As outlined [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html), the `ESP_BT_GAP_DISC_RES_EVT` event is triggered in the ``bt_app_gap_cb()`` callback function when a Bluetooth device has responded to the `esp_err_tesp_bt_gap_start_discovery()` call (which performs the BT discovery process). This seems to be the "device chiming in event," as a response to the scan by the ESP32.
 
 The `update_device_info(param);` line uses values filled into the [`param` variable](https://github.com/espressif/esp-idf/blob/a352097/components/bt/host/bluedroid/api/include/api/esp_gap_bt_api.h#L339) to display the BT address and RSSI (signal strength) of the device. Could the device's name be far behind?
 
