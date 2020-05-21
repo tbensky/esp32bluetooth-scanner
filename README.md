@@ -33,7 +33,7 @@ The `update_device_info(param);` line uses values filled into the [`param` varia
 uint8_t rmt_name[ESP_BT_GAP_MAX_BDNAME_LEN + 1]; /*!< Remote device name */`
 ``` 
 
-so I knew I was getting close. I then noticed the function [esp_bt_gap_read_remote_name()](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html#_CPPv427esp_bt_gap_read_remote_name13esp_bd_addr_t). Since `ESP_BT_GAP_DISC_RES_EVT` means a device has chimed in, calling this function in its `case` made sense (as shown in the code block above). The parameter `param->disc_res.bda` is a 6-byte binary representation of the device's BT address (something like 83:d7:95:4a:07:1d in ASCII).
+so I knew I was getting close. I then noticed the function [esp_bt_gap_read_remote_name()](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/bluetooth/esp_gap_bt.html#_CPPv427esp_bt_gap_read_remote_name13esp_bd_addr_t). Since  the `ESP_BT_GAP_DISC_RES_EVT` event means a device has chimed in, calling this function in its `case` made sense (as shown in the code block above). The parameter `param->disc_res.bda` is a 6-byte binary representation of the device's BT address (something like 83:d7:95:4a:07:1d in ASCII), that `esp_bt_gap_read_remote_name()` requires (i.e. find the name of the BT device with the address in `param->disc_res.bda`).
 
 
 To capture the returned name, you have to add this block
