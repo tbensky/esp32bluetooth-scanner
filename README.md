@@ -42,7 +42,7 @@ case ESP_BT_GAP_READ_REMOTE_NAME_EVT:
             break;
 ```
 
-into the callback ``bt_app_gap_cb()`` ``case`` structure. When this is triggered, the variable `param->read_rmt_name.rmt_name)` will contain the remote device's name `ESP_BT_GAP_READ_REMOTE_NAME_EVT` is the callback event for `esp_bt_gap_read_remote_name()`.
+into the callback ``bt_app_gap_cb()`` ``case`` structure. When this is triggered, the variable `param->read_rmt_name.rmt_name` will contain the remote device's name `ESP_BT_GAP_READ_REMOTE_NAME_EVT` is the callback event for `esp_bt_gap_read_remote_name()`.
 
 # Results
 
