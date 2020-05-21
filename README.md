@@ -48,9 +48,11 @@ into the callback ``bt_app_gap_cb()`` ``case`` structure. When this case trigger
 
 # Results
 
-Works great, as long as your devices are in discovery mode.  Most small peripherals like headphones, etc. will be found all the time. With phones, not so, as they're not always in discovery mode.  The iPhone and iPad for example, are only discoverable when on, and you are in the Settings>General>Bluetooth menu. In this case, the ESP32 will find it and display its name every time (same with an iPad), but will not if you are not in this menu.
+Works great, as long as your devices are in discovery mode.  Most small peripherals like headphones, etc. will be found all the time. With phones, not so, as they're not always in discovery mode.  The iPhone and iPad for example, are only discoverable when on, and you are in the Settings>General>Bluetooth menu. In this case, the ESP32 will find it and display its name every time (same with an iPad), but will not if you are not in this menu, or if the device is asleep.
 
 I was naively hoping that any BT device near an ESP32 would chime in to the ESP32 probe for its name. I see now what a security risk that would be, as we don't want people walking around with their phones constantly broadcasting (anything). 
+
+# Contact Tracer?
 
 For a contact tracer, I was thinking of having Person A embed their Covid status into their device name (in some encrypted form), for Person B (with a probing ESP32 on their keychain/in their pocket) to decrypt and possibly alert them about.
 
