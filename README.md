@@ -58,7 +58,7 @@ I was naively hoping that any BT device near an ESP32 would chime in to the ESP3
 
 For a contact tracer, I was thinking of having Person A embed their Covid status into their device name (in some encrypted form), for Person B (with a probing ESP32 on their keychain/in their pocket) to decrypt and possibly alert them about.
 
-## Work Cycle (macOS)
+## Notes to self: Work Cycle (macOS)
 ```
 . $HOME/esp/esp-idf/export.sh
 idf.py set-target esp32
@@ -67,7 +67,8 @@ idf.py set-target esp32
 
 idf.py build
 idf.py -p /dev/tty.usbserial-0001 flash
-(Cntr-] to exit monitor.)
+idf.py -p /dev/tty.usbserial-0001 monitor
+(Cntl-] to exit monitor.)
 ```
 
 
