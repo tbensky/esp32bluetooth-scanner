@@ -8,6 +8,8 @@ to build a digital contact tracing system to help get us through the Covid-19 cr
 
 The install procedure [here](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) worked flawlessly on macOS.
 
+
+
 I did a bunch of searching on my way to develop the code for the ESP32, and there seems to be a lot of
 people wanting to probe BT device names, with few solutions, so I am presenting mine here.
 
@@ -55,5 +57,17 @@ I was naively hoping that any BT device near an ESP32 would chime in to the ESP3
 # Contact Tracer?
 
 For a contact tracer, I was thinking of having Person A embed their Covid status into their device name (in some encrypted form), for Person B (with a probing ESP32 on their keychain/in their pocket) to decrypt and possibly alert them about.
+
+## Work Cycle (macOS)
+```
+. $HOME/esp/esp-idf/export.sh
+idf.py set-target esp32
+
+...
+
+idf.py build
+idf.py -p /dev/tty.usbserial-0001 flash
+(Cntr-] to exit monitor.)
+```
 
 
