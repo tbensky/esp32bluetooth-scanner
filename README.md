@@ -63,6 +63,8 @@ For a contact tracer, I was thinking of having Person A embed their Covid status
 . $HOME/esp/esp-idf/export.sh
 idf.py set-target esp32
 
+2022-Dec-17: this may be better to get started: . ./export.sh
+
 ...
 
 idf.py build
